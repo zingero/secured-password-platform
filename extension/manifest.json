@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "BGU Password Manager",
+    "short_name": "BGU PM",
+    "description": "store and retrieve passwords from server securely",
+    "version": "1.0.0",
+    "minimum_chrome_version": "38",
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "tabs",
+        "activeTab",
+        "storage",
+        "webNavigation"
+    ],
+
+    "icons": {
+        "48": "assets/pmoff.png"
+    },
+
+    "browser_action": {},
+
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "js": [
+            "lib/jquery.js",
+            "content.js"
+        ],
+        "run_at": "document_end"
+    }],
+
+    "background": { "scripts": ["lib/jquery.js", "lib/hmac-sha256.js", "lib/sha256.js", "lib/jsaes.js", "backround.js"] },
+
+    "options_page": "options.html"
+}

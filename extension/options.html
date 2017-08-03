@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jsbn.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/rsa.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/prng4.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/rng.js" type="text/javascript" charset="utf-8"></script>
+<style>
+	/* Full-width input fields */
+	input[type=text], input[type=password] {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/* Set a style for all buttons */
+	button {
+		background-color: #2626ff;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: auto;
+		display: inline-block;
+		 border-radius: 25px;
+
+	}
+
+	/* Add padding to container elements */
+	.container {
+		padding: 16px;
+	}
+
+	/* Clear floats */
+	.clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	/* Change styles for signup button on extra small screens */
+	@media screen and (max-width: 300px) {
+		.signupbtn {
+			width: 100%;
+		}
+	}
+	
+	form {
+		border: 3px solid #f1f1f1;
+		 width: 70%;
+	}
+
+	button:hover {
+		opacity: 0.7;
+		
+	}
+
+	span.psw {
+		padding-top: 16px;
+	}
+	
+	table {
+	border-collapse: collapse;
+	width: 70%;
+	}
+
+	th, td {
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even){background-color: #f2f2f2}
+
+	th {
+		background-color: #2693ff;
+		color: white;
+	}
+
+	.displayornot {
+		display: none;
+	}
+
+	button:focus {outline:0;}
+	
+	.iconcontainer {
+		padding: 40px;
+		height: 120px;
+		width: 120px;
+	}
+</style>
+
+<head><title>My password manager options</title></head>
+<body>
+	<h2 id="loginTitle">Login and retrieve pass file</h2>
+	<form action="#" style="border:1px solid #ccc">
+		<div class="container">
+			<input type="text" placeholder="Enter email" name="email" required>
+			<input type="password" placeholder="Enter Password" name="password" minlength="6" required>  
+			<button id="login" type="button">Login</button>
+		</div>
+	</form>
+	<div id="logoutdiv" class="displayornot"> 
+		<h2>logout and sync local pass file with server</h2>
+		<button id="logout" type="button">logout and sync with server</button>
+	</div>
+	<div id="loginmsg"> </div> 
+	<br>
+
+	<div id="tbmanagediv" class="displayornot">
+		<button id="manage" type="button">Manage passwords</button>
+		<button id="deleteAccount" type="button">Delete account</button>
+	<table id="tbmanage" class="displayornot">
+	</table>
+	</div>
+	
+	<h2>Signup and create pass file</h2>
+	<form action="#" style="border:1px solid #ccc">
+		<div class="container">
+			<input type="text" placeholder="Enter Email" name="email" required>
+			<input type="password" id="firstpass" placeholder="Enter Password" name="password" minlength="8" required>
+			<span><b>password quality: </span><span id="passcore"> </span></b>
+			<input type="password" placeholder="Repeat Password" name="pswrepeat" required>
+			<div class="clearfix">
+				<button id="signup" type="button" class="signupbtn">Sign Up</button>
+					<span id="resultmsg"> </span>
+			</div>
+		</div>
+	</form>
+	<img class="iconcontainer" src="assets/bguIcon.png">
+	<img class="iconcontainer" src="assets/aes256.png">
+	<img class="iconcontainer" src="assets/loginbutton.jpg">
+	<img class="iconcontainer" src="assets/rsa.png">
+	<script type="text/javascript" src="lib/hmac-sha256.js"></script>
+	<script type="text/javascript" src="lib/jsaes.js"></script>
+	<script type="text/javascript" src="lib/sha256.js"></script>
+	<script type="text/javascript" src="option.js"></script>
+</body>
+</html>
